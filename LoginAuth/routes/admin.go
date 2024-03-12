@@ -134,3 +134,56 @@ func Block(c *gin.Context) {
 	c.Redirect(http.StatusSeeOther, "/admin")
  }
 }  
+func Search(c *gin.Context) {
+    // search query from the request parameters
+    query := c.Query("query")
+
+    // Perform the search operation 
+    var searchResults []model.UserModel
+    for _, user := range UserTable {
+        // Check if the query matches any user's name or email
+        if strings.Contains(strings.ToLower(user.Name), strings.ToLower(query)) ||
+           strings.Contains(strings.ToLower(user.Email), strings.ToLower(query)) {
+            searchResults = append(searchResults, user)
+        }
+    }
+
+    // Render the search results template with the matching users
+    c.HTML(http.StatusOK, "SearchResults.html", gin.H{
+        "Results": searchResults,
+        "Query":   query,
+    })
+}
+
+func AddUser(c *gin.Context) {
+    // Get user details from the form submission
+    name := c.PostForm("name")
+    email := c.PostForm("email")
+	password := c.PostForm("password")
+
+	    // Hash the password
+		hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
+		if err != nil {
+			// Handle error (e.g., log it, return an error response)
+			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": "Failed to hash password"})
+			return
+		}
+
+      // Create new user model with hashed password
+    newUser := model.UserModel{
+        Name:  name,
+        Email: email,
+		Password: string(hashedPassword),
+      
+    }
+	
+	Err = "User details added"
+    // Add the new user to the database
+    database.DB.Create(&newUser)
+	
+
+    // Redirect back to the admin page after adding the user
+    c.Redirect(http.StatusSeeOther, "/valadmin")
+}
+
+
