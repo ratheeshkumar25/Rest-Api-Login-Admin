@@ -1,14 +1,17 @@
-#Secure REST API with JWT Authentication and RBAC
+
+>>>>>>Secure REST API with JWT Authentication and RBAC
 
 This project implements a secure REST API with features for user authentication, role-based access control (RBAC), and student management. JWT (JSON Web Token) authentication and stateless sessions ensure robust security and scalability.
 Endpoint	Description	Roles Allowed
-/students/signup	Allows students to register for accounts.	Public
-/students/login	Enables students to log in with credentials and receive a JWT upon successful login.	Public
-/students/logout	Ends an authenticated student's session by invalidating their JWT.	Authorized
-/students/*	Additional endpoints for student-specific operations (implement as needed).	Authorized
-/admin/login	Grants admins access to the API through login with credentials and generates a JWT.	Public
-/admin/logout	Terminates an admin's authenticated session by invalidating their JWT.	Authorized
-/admin/*	CRUD (Create, Read, Update, Delete) operations on resources (implement as needed).	Admin
+
+
+>>>>>>students/signup	Allows students to register for accounts.	Public
+>>>>>>students/login	Enables students to log in with credentials and receive a JWT upon successful login.	Public
+>>>>>>students/logout	Ends an authenticated student's session by invalidating their JWT.	Authorized
+>>>>>>students/*	Additional endpoints for student-specific operations (implement as needed).	Authorized
+>>>>>>admin/login	Grants admins access to the API through login with credentials and generates a JWT.	Public
+>>>>>>admin/logout	Terminates an admin's authenticated session by invalidating their JWT.	Authorized
+>>>>>>admin/*	CRUD (Create, Read, Update, Delete) operations on resources (implement as needed).	Admin
 
 Authentication Workflow:
 
