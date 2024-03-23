@@ -1,8 +1,8 @@
 
->>>>>>Secure REST API with JWT Authentication and RBAC
+**>>>>>>Secure REST API with JWT Authentication and RBAC**
 
-This project implements a secure REST API with features for user authentication, role-based access control (RBAC), and student management. JWT (JSON Web Token) authentication and stateless sessions ensure robust security and scalability.
-Endpoint	Description	Roles Allowed
+**This project implements a secure REST API with features for user authentication, role-based access control (RBAC), and student management. JWT (JSON Web Token) authentication and stateless sessions ensure robust security and scalability.**
+**Endpoint	Description	Roles Allowed**
 
 
 >>>>>>students/signup	Allows students to register for accounts.	Public
@@ -13,9 +13,9 @@ Endpoint	Description	Roles Allowed
 >>>>>>admin/logout	Terminates an admin's authenticated session by invalidating their JWT.	Authorized
 >>>>>>admin/*	CRUD (Create, Read, Update, Delete) operations on resources (implement as needed).	Admin
 
-Authentication Workflow:
+**Authentication Workflow:**
 
-User Login: Users (students or admins) send login credentials to the /students/login or /admin/login endpoint.
+__User Login: Users (students or admins) send login credentials to the /students/login or /admin/login endpoint.
 Server Verification: The server validates the credentials.
 JWT Generation (Success): Upon successful validation, the server generates a JWT containing user information and a set expiration time.
 JWT Response: The server sends the JWT back to the user.
@@ -24,10 +24,10 @@ JWT Validation: The server verifies the JWT's signature and expiration before pr
 RBAC Enforcement: The server checks the user's role (encoded in the JWT) against allowed roles for the requested operation.
 Authorized Access: If the JWT is valid and the user has the necessary role, the server processes the request.
 Unauthorized Access (Error): If the JWT is invalid, expired, or the user lacks the required role, the server returns an error response.
-Client-Side JWT Storage:
+Client-Side JWT Storage:__
 
-For optimal security, store JWTs securely on the client-side (e.g., HttpOnly cookies with Secure attribute, Local Storage with appropriate security settings).
-Running the API:
+**For optimal security, store JWTs securely on the client-side (e.g., HttpOnly cookies with Secure attribute, Local Storage with appropriate security settings).
+Running the API:**
 
 Prerequisites: Ensure you have necessary dependencies installed (e.g., Go environment, database drivers).
 Configuration: Edit configuration files (if any) to set database connection details or other API settings.
